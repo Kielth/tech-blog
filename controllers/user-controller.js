@@ -62,7 +62,6 @@ const userController = {
         if(req.session){
           req.session.destroy((err) => {
             console.log("LOG OUT CALLED");
-            console.log("logged in status: " + req.session.loggedIn);
             res.render('homepage');
           });  
         }else{
