@@ -21,25 +21,28 @@
           <col>
             <nav>
               <ul>
-                {{#if loggedIn}}
+                {{!-- {{#if loggedIn}} --}}
 
-                <li>
-                  <a href="/home">Blog</a>
+               <li>
+                  <a href="/home">Home</a>
                 </li>
                 <li>
-                  <a href="/dashboard">Classroom</a>
+                  <a href="/dashboard">Dashboard</a>
                 </li>
-                    <li>
-                        <a id="logout">Log Out</a>
-                    </li>
-                {{else}}
+                <li>
+                  <a href="/login">Login</a>
+                </li>
+                <li>
+                  <a href="/api/users/logout">Logout</a>
+                </li>
+                {{!-- {{else}}
                     <li>
                         <a href="/login"></a>
                     </li>
-                {{/if}}
+                {{/if}} --}}
               </ul>
             </nav>
-          <col>
+          </col>
         </header>
       </row>
     </container>
