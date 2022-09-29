@@ -1,44 +1,51 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-
 <container>
-    <!-- used to check if logged in or not when testing-->
-    <!-- <p style="color: black;">loggedIn: {{loggedIn}}</p> -->
     <row>
-        <col>
-            <form class="signup-form">
-                <div>
-                <h3>Sign Up</h3>
-                <input type="text" name="Username" id="username-signup" name="name" class="form-input" required/>
-                <label for="email">Username</label>
-                 <input type="email" name="email" id="email-signup" class="form-input" required/>
-                <label for="passwprd">Password</label>
-            <input type="password" name="password" id="password-signup" class="form-input" required/>
-        <label for="password">Confirm Password</label>
-            <input type="password" name="password" id="password2" class="form-input"/>
-        <div style="margin-top: 7px;" id="CheckPasswordMatch"></div>
-        <row>
-            <col>
-                <button class="hero-form" type="submit">Sign Up</button>
-            </col> 
-            </form>   
-        <col>
-            <a href="/login">Login Instead</a>
-        </col>
-        </row>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><span>Register</span></h3>
+            </div>
+            <form id="register" class="register">
+                <ul id="login-form" class="login-form">
+                    <li>
+                        <label for="username">Username</label><br>
+                        <input type="text" name="Username" id="username" name="name" class="form-input" required/>
+                    </li>
+                    <li>
+                        <label for="passwprd">Password</label><br>
+                        <input type="password" name="password" id="password1" class="form-input" required/>
+                    </li>
+                    <li>
+                        <label for="password">Confirm Password</label><br>
+                        <input type="password" name="password" id="password2" class="form-input"/><br><br>
+                        <div style="margin-top: 7px;" id="CheckPasswordMatch"></div>
+                    </li>
+                    <li>
+                        <div class="button">
+                        <button class="login-btn" id="registerBtn" type="submit">Register</button><br><br>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/login">login instead</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </row>
 </container>
+      
 
 <script>
-
    $("#password2").on('keyup', function(){
-    var password = $("#password-signup").val();
-    var confirmPassword = $("#password2").val();
-    if (password != confirmPassword)
-        $("#CheckPasswordMatch").html("Password does not match !").css("color","red");
-    else
-        $("#CheckPasswordMatch").html("Password match !").css("color","green");
-   });
-
+        var password = $("#password1").val();
+        var confirmPassword = $("#password2").val();
+        if (password != confirmPassword){
+            $("#CheckPasswordMatch").html("Password does not match !").css("color", "red");
+        }else{
+            $("#CheckPasswordMatch").html("Password match !").css("color", "green");
+        }
+    });
 </script>
 
 <script src="/javascript/register.js"></script>

@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const homeController = require("../controllers/home-controller");
+const dashboardController = require('../controllers/dashboard-controller');
 const withAuth = require("../utils/auth");
 
 router.get('/', (req, res) => {
@@ -10,8 +11,13 @@ router.get('/homepage', (req, res) => {
   res.render('homepage', {loggedIn: req.session.loggedIn});
 });
 
-router.get('/login', (req, res) => {
+router.get('/test', dashboardController.showAllPostsHomepage);
 
+router.get('/create-post', (req, res) => {
+  res.render('create-post');
+});
+
+router.get('/login', (req, res) => {
   res.render('login');
 });
 

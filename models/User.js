@@ -40,13 +40,16 @@ User.init(
         len: [4],
       },
     },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isEmail: true,
-      },
-    },   
+    
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: Date.now,
+    },
+
+    updatedAt: {
+      type: DataTypes.DATE,
+      defaultValue: Date.now,
+    },
   },
   {
     hooks: {
