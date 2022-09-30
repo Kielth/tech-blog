@@ -3,13 +3,9 @@ const homeController = require("../controllers/home-controller");
 const dashboardController = require('../controllers/dashboard-controller');
 const withAuth = require("../utils/auth");
 
-router.get('/', (req, res) => {
-  res.render('homepage', {loggedIn: req.session.loggedIn});
-});
+router.get('/', dashboardController.showAllPostsHomepage);
 
-router.get('/homepage', (req, res) => {
-  res.render('homepage', {loggedIn: req.session.loggedIn});
-});
+router.get('/homepage', dashboardController.showAllPostsHomepage);
 
 router.get('/test', dashboardController.showAllPostsHomepage);
 

@@ -1,4 +1,4 @@
-const {Post} = require("../models");
+const {Post, User, Comment} = require("../models");
 
 const dashboardController = {
 
@@ -8,9 +8,10 @@ const dashboardController = {
             title: req.body.title,
             content_txt: req.body.content_txt,
             user_id: req.session.user_id,
-        }).then((dbData) => {
-            res.render('homepage');
-        });
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+          });
     },
 
     showAllUserPosts: (req,res) => {
@@ -22,11 +23,24 @@ const dashboardController = {
     },
 
     showAllPostsHomepage: (req, res) => {
-        Post.findAll().then((dbPostData) => {
-            //console.log(dbPostData);
-            res.render('homepage', dbPostData);
-            // res.render('homepage', dbPostData);
-        });
+        Post.findAll({
+            // raw: true,
+            include:{
+                model: User,
+                attributes: ["username"],
+                required: true,
+             },
+             raw:true,
+             nest: true,
+        }).then((posts) => {
+            console.log(posts);
+            // console.log(posts.dataValues.user);
+            res.render('homepage', {posts});
+            // res.render('homepage', posts);
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+          });
     }
 
 };
