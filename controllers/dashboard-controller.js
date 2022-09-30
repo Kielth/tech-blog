@@ -15,7 +15,26 @@ const dashboardController = {
     },
 
     showAllUserPosts: (req,res) => {
-
+        Post.findAll({
+            where:{
+                user_id: req.session.user_id,
+            },
+            include:{
+                model: User,
+                attributes: ["username"],
+                required: true,
+             },
+             raw:true,
+             nest: true,
+        }).then((posts) => {
+            console.log(posts);
+            // console.log(posts.dataValues.user);
+            res.render('dashboard', {posts});
+            // res.render('homepage', posts);
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+          });
     },
 
     editPost: (req,res) => {
