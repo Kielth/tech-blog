@@ -1,19 +1,22 @@
-<article class="blog-post">
-  <container>
-    <row>
-      <div class="card">
-        <div class="card-header">
-          <div class="title"><h2>{{title}}</h2>
-            by {{user.username}} on {{format_date createdAt}}
-          </div>
-            <div class="card-body">
-              <div class="meta">
-                {{content_txt}} 
-                {{comments.length}} {{format_plural "comment" comments.length}}
+<a href="/single-post/{{id}}">
+  <li>
+    <article class="blog-post">
+      <container><data postId="{{id}}"></data>
+        <row>
+          <div class="card">
+            <div class="card-header">
+              <div class="title"><h2>{{title}}</h2>
+                by {{user.username}} on {{format_date createdAt}}
               </div>
+                <div class="card-body">
+                  <div class="meta">
+                    {{content_txt}}<br><br>
+                    {{commentCount}} {{format_plural "comment" commentCount}}
+                  </div>
+                </div>
             </div>
-        </div>
-      </div>
-    </row>
-  </container>
-</article>
+          </div>
+        </row>
+      </container>
+    </article>
+  </li>
