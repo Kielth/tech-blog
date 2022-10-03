@@ -18,6 +18,12 @@ console.log(">>>>>ADD COMMENT");
       headers: {
         'Content-Type': 'application/json'
       }
+    }).then((response)=>{
+      if (response.ok) {
+        document.location.reload();
+      } else {
+        alert(response.statusText);
+      }
     });
 
 //console.log(JSON.stringify(response));
@@ -32,13 +38,6 @@ console.log("RESPONSE: "+JSON.stringify(response));
   }
 }
 
-//this code runs at load/reload
-document.getElementById('create-comment-btn').addEventListener('click', commentFormHandler);
-
-
-
-comment_body.value = "";
-
 function edit(id) {
   console.log(">>>>>EDIT");
   let myEditButton = document.querySelector("#btnEdit_" + id);
@@ -51,7 +50,7 @@ function edit(id) {
   } else {
     //SAVE THE CHANGES
     console.log("commentid: "+id);
-    fetch(`/api/comment/${id}`, {
+    fetch(`/api/comments/edit/${id}`, {
       method: 'PUT',
       body: JSON.stringify({
         comment_text: document.querySelector("#comment_text_area_" + id).value
@@ -71,15 +70,13 @@ function edit(id) {
 };
 
 function del(id){
-  fetch(`/api/comment/${id}`, {
+  fetch(`/api/comments/delete/${id}`, {
     method: 'DELETE',
-    body: JSON.stringify({
-      comment_text: document.querySelector("#comment_text_area_" + id).value
-    }),
     headers: {
       'Content-Type': 'application/json'
     }
   }).then((response) => {
+    console.log(response);
     if (response.ok) {
       document.location.reload();
     } else {
@@ -87,3 +84,7 @@ function del(id){
     }
   });
 }
+
+
+//this code runs at load/reload
+document.getElementById('create-comment-btn').addEventListener('click', commentFormHandler);

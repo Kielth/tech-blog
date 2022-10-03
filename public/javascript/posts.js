@@ -13,6 +13,8 @@ function createPostPostHandler(event){
             content_txt: content_txt,
           }),
           headers: { "Content-Type": "application/json" },
+        }).then((result) => {
+          document.location.replace("/dashboard/");
         });
     }
 }
