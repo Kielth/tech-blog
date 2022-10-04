@@ -9,7 +9,7 @@ console.log(">>>>>ADD COMMENT");
   console.log(">>>>>POST ID: "  + comment_text);
 
   if (comment_text) {
-    const response = await fetch('/api/dashboard/comment', {
+    const response = await fetch('/api/comments', {
       method: 'POST',
       body: JSON.stringify({
         post_id: post_id,
@@ -50,7 +50,7 @@ function edit(id) {
   } else {
     //SAVE THE CHANGES
     console.log("commentid: "+id);
-    fetch(`/api/comments/edit/${id}`, {
+    fetch(`/api/comments/${id}`, {
       method: 'PUT',
       body: JSON.stringify({
         comment_text: document.querySelector("#comment_text_area_" + id).value
@@ -70,7 +70,7 @@ function edit(id) {
 };
 
 function del(id){
-  fetch(`/api/comments/delete/${id}`, {
+  fetch(`/api/comments/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'

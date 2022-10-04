@@ -6,7 +6,7 @@ function createPostPostHandler(event){
     const content_txt = document.getElementById("content_txt").value.trim();
 
     if (title && content_txt){
-        const response = fetch("/api/dashboard/createPost", {
+        const response = fetch("/api/posts", {
           method: "post",
           body: JSON.stringify({
             title: title,
