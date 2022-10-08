@@ -15,6 +15,8 @@ async function loginFormHandler(event) {
     });
     
     const obj = await response.json();
+    // console.log("RESPONSE" + JSON.stringify(obj));
+    // console.log("RESPONSE" + JSON.stringify(response));
 
     if (response.ok) {
       document.location.replace("/dashboard/");
