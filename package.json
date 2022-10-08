@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "engines":{"node": "19.8.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -28,4 +30,5 @@
     "mysql2": "^2.3.3",
     "sequelize": "^6.23.1"
   }
+  
 }
